@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src = "data.js"></script>
+    <style>
+        #wrapper{
+            width: 500px;
+            height: 900px;
+            border: 2px solid black;
+            box-sizing: border-box;
+            margin: auto;
+        }
+
+        #flag{
+            width: 100%;
+            height: 300px;
+            border: 2px solid black;
+            box-sizing: border-box;
+
+        }
+
+        #hint{
+            width: 100%;
+            height: 200px;
+            border: 2px solid black;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 40px;
+        }
+
+        #user{
+            width: 100%;
+            height: 200px;
+            border: 2px solid black;
+            box-sizing: border-box;
+        }
+
+        #user input{
+            width: 100%;
+            height: 100%;
+            font-size: 60px;
+            text-align: center;
+        }
+        #result{
+            width: 100%;
+            height: 100px;
+            border: 2px solid black;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 40px;
+        }
+
+        #score{
+            width: 100%;
+            height: 100px;
+            border: 2px solid black;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 40px;
+            
+        }
+    </style>
+    <script>
+        var wrapper, flag, hint, user, result, score, txt;
+
+        var index =0;
+        var point = 0;
+
+        function printPoint(){
+            score.innerText = point + " 점";
+        };
+
+        function printFlag(){
+            
+            if(index >= data.length){
+                 alert("총 점수: "+point);       
+                 flag.style.background = "none";
+            }else{
+                flag.style.background = "url("+data[index][0]+")";
+                flag.style.backgroundSize = "100% 100%";
+            }
+        }
+
+
+
+        function printHint(){
+            if(index >= data.length){
+                hint.innerText = "";
+            }else{
+                hint.innerText = data[index][1];
+            }
+        }
+
+        function compareAnswer(){
+            
+        }
+
+        function init(){
+            wrapper = document.getElementById("wrapper");
+            flag = document.getElementById("flag");
+            hint = document.getElementById("hint");
+            result = document.getElementById("result");
+            score = document.getElementById("score");
+            txt = document.getElementById("txt");
+            
+            printFlag();
+            printHint();
+
+            txt.focus();
+
+            txt.addEventListener("keyup", function(){
+                if(event.keyCode == 13){
+                    if(txt.value == data[index][2]){
+                        result.innerText = "O";
+                        point += 10;
+                    }else{
+                        result.innerText = "X";
+                    }
+                    txt.value = "";
+                    index++;
+                    
+                    printPoint();
+                    printFlag();
+                    printHint();
+                }
+            });
+            
+
+        }
+
+        window.addEventListener("load", function(){
+            init();
+        });
+    </script>
+</head>
+<body>
+    <div id = "wrapper">
+        <div id = "flag"></div>
+        <div id = "hint"></div>
+        <div id = "user">
+            <input id ="txt"  type="text"/>
+        </div>
+        <div id = "result"></div>
+        <div id = "score"></div>
+    </div>
+</body>
+</html>

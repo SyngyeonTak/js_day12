@@ -1,0 +1,19 @@
+<script>
+    var box = new Array();
+    var animal = ["호랑이" ,"사자" ,"말"];
+    var flower = ["장미", "튤립", "백합"];
+    var it = ["java", "oracle", "spring"];
+
+    box.push(animal);
+    box.push(flower);
+    box.push(it);
+
+    for(var i=0; i<box.length; i++){
+        for(var j=0; j<box[i].length; j++){
+            document.write(box[i][j]);
+        }
+    }
+
+    document.write(box[1][2]);
+
+</script>

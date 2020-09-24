@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width: 1000px;
+            height: 600px;
+            margin: auto;
+            position: relative;
+            background: url(../img/gameBg/gameBg.png);
+            background-size: 100% 100%;
+        }
+    </style>
+    <script src = "./map.js"></script>
+    <script>
+        var wrapper;
+        var arrBrick = new Array();
+
+        /*맵을 표현한 이차원 배열 생성*/
+       
+
+        function createBrick(){
+
+            for(var i=0; i<map.length; i++){
+                for(var j=0; j<map[i].length; j++){
+                    
+                    if(map[i][j] == 1){
+                        var brick = document.createElement("img");
+                        brick.src = "../../../images/brick.png";
+                        brick.style.width = 20+"px";
+                        brick.style.height = 20+"px";
+                        brick.style.position = "absolute";
+                        brick.style.left = (j*20)+"px";
+                        brick.style.top = (i*20)+"px";
+                    
+                        wrapper.appendChild(brick);
+                    }
+                }
+            }
+        }
+
+        function init(){
+            wrapper = document.getElementById("wrapper");
+            createBrick();
+        }
+
+        window.addEventListener("load", function(){
+            init();
+        });
+    </script>
+</head>
+<body>
+    <div id = "wrapper"></div>
+</body>
+</html>
